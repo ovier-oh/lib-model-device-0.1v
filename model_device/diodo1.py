@@ -20,4 +20,14 @@ class Diodo1:
         self.VT = 0.02585 
 
     # Ecuacion para calcular la corriente a traves del diodo 
-    def calcular_
+    def calcular_corriente(self, Vd):
+        # Componente exponencial principal (diodo ideal)
+        Id = self.IS * (np.exp((Vd - self.RS * 0)/(self.N * self.VT))-1) # Suponemos que Id = 0 inicialmente 
+
+        # Corriente de recombinacion 
+        Irec = self.ISR * (np.exp(Vd / (sefl.NR * self.VT)) - 1)
+
+        # Corriente total (sin incluir efectos dinamicos de TT y CJO)
+        Itotal = Id + Irec + (Vd / self.RS) 
+
+        return Itotal
